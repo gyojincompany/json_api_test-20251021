@@ -2,6 +2,10 @@ package com.gyojincompany.board.movie;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -23,6 +27,9 @@ public class Movie {
 	
 	//1:N 관계->영화1개:여러개의 영화댓글
 	@OneToMany(mappedBy = "movie", cascade = CascadeType.ALL)
+//	@JsonIgnore
+	//@JsonManagedReference //Movie->MovieComment
+	//@JsonBackReference
 	private List<MovieComment> movieComments;
 
 }
